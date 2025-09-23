@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Job Application Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { max-width: 500px; }
+        label { display: block; margin-top: 10px; }
+        input, textarea { width: 100%; padding: 8px; margin-top: 5px; }
+        button { margin-top: 15px; padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <h1>Test Job Application Form</h1>
+    <form>
+        <!-- Greenhouse-style fields -->
+        <label for="applicant-name">Full Name</label>
+        <input type="text" name="applicant.name" id="applicant-name">
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+
+        <label for="phone">Phone</label>
+        <input type="tel" name="phone" id="phone">
+
+        <label for="linkedin">LinkedIn URL</label>
+        <input type="url" name="urls[LinkedIn]" id="linkedin">
+
+        <!-- Generic fields that should be auto-detected -->
+        <label for="generic-name">Name (generic)</label>
+        <input type="text" name="full_name" id="generic-name">
+
+        <label for="generic-email">Email (generic)</label>
+        <input type="email" name="email_address" id="generic-email">
+
+        <label for="cover-letter">Cover Letter</label>
+        <textarea name="cover_letter" id="cover-letter" rows="5"></textarea>
+
+        <button type="submit">Submit Application</button>
+    </form>
+
+    <script>
+        // Add some interactivity for testing
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Form would be submitted (test mode)');
+        });
+    </script>
+</body>
+</html>
