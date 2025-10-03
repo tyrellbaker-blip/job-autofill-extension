@@ -1,0 +1,28 @@
+{
+  "name": "job-autofill-extension",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Chrome extension for auto-filling job applications",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.268",
+    "@typescript-eslint/eslint-plugin": "^8.41.0",
+    "@typescript-eslint/parser": "^8.41.0",
+    "@vitest/coverage-v8": "^3.2.0",
+    "eslint": "^9.18.0",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0",
+    "happy-dom": "^15.11.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

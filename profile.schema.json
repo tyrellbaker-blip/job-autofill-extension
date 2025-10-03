@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Job Application Profile",
+  "type": "object",
+  "required": ["version", "id", "created_at", "updated_at"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Schema version",
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique profile identifier"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp"
+    },
+    "identity": {
+      "type": "object",
+      "properties": {
+        "first_name": { "type": "string" },
+        "last_name": { "type": "string" },
+        "full_name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "url"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["linkedin", "github", "portfolio", "website", "other"]
+              },
+              "url": { "type": "string", "format": "uri" }
+            }
+          }
+        }
+      }
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "line1": { "type": "string" },
+        "line2": { "type": "string" },
+        "city": { "type": "string" },
+        "state": { "type": "string" },
+        "postal_code": { "type": "string" },
+        "country": { "type": "string" }
+      }
+    },
+    "work_auth": {
+      "type": "object",
+      "properties": {
+        "authorized": { "type": "boolean" },
+        "needs_sponsorship": { "type": "boolean" }
+      }
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "degree": { "type": "string" },
+          "major": { "type": "string" },
+          "institution": { "type": "string" },
+          "graduation_date": { "type": "string" }
+        }
+      }
+    },
+    "documents": {
+      "type": "object",
+      "properties": {
+        "defaults": {
+          "type": "object",
+          "properties": {
+            "resume_id": { "type": "string" },
+            "cover_letter_id": { "type": "string" }
+          }
+        },
+        "resumes": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/DocRef" }
+        },
+        "cover_letters": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/DocRef" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "DocRef": {
+      "type": "object",
+      "required": ["id", "label", "version", "mime", "sha256", "created_at", "updated_at"],
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "version": { "type": "string" },
+        "mime": { "type": "string" },
+        "sha256": { "type": "string" },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "pages": { "type": "integer" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}
